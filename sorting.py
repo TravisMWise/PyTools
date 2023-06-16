@@ -47,7 +47,6 @@ class Sorter():
             return nums
         firstHalf = nums[0:length//2]
         secondHalf = nums[length//2:length]
-        # print(firstHalf, secondHalf)
         list1 = self.split(firstHalf, len(firstHalf))
         list2 = self.split(secondHalf, len(secondHalf))
             

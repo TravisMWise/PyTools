@@ -1,4 +1,3 @@
-
 class Searcher:
     """
     At 10,000 entries the time taken to search all entries is

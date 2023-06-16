@@ -11,7 +11,6 @@ def main() -> None:
     sorter.quickSort(rawData)
     # print("\nSorted data: {}".format(rawData))
     searcher = Searcher()
-    
     startTime = time.time()
     for data in rawData:
         searcher.binarySearch(rawData, data)
@@ -35,6 +34,5 @@ def readData(filename, type) -> list:
             ret.append(int(line))
         return ret
     
-# Call the main function to run the python script
 if __name__== '__main__':
     main()

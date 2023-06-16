@@ -96,5 +96,3 @@ class AVL:
     pass
 class Trie:
     pass
-class HashTable:
-    pass
