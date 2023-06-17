@@ -6,6 +6,8 @@ class Searcher:
     """
     def __init__(self) -> None:
         pass
+    def depthFirstSearch(self):
+        pass
     def binarySearch(self, nums, value) -> bool:
         """Take in an array of integers and a target value. 
         Search for the value in the array, return True if successful 

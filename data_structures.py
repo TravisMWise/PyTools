@@ -96,3 +96,82 @@ class AVL:
     pass
 class Trie:
     pass
+
+class dNode:
+    def __init__(self, data: int=None, next=None, prev=None) -> None:
+        self.data = data
+        self.next = next
+        self.prev = prev
+        pass
+    pass
+class Stack:
+    """Stack data type that supports adding 
+    and removing from the front of the structure."""
+    def __init__(self) -> None:
+        self.head = None
+        pass
+    def push(self, data):
+        """Add a value to the front of the stack."""
+        if self.head == None: # Check if the stack is empty
+            self.head = dNode(data)
+        else:
+            newHead = dNode(data, self.head)
+            self.head = newHead
+    def pop(self):
+        """Remove the first value to the stack if it exists."""
+        if self.head == None:
+            return
+        else:
+            temp = self.head
+            self.head = self.head.next
+            del temp
+    def export(self) -> list:
+        """Return every element in the stack as a list"""
+        l = []
+        temp = self.head
+        while temp is not None:
+            l.append(temp.data)
+            temp = temp.next
+        return l
+class Queue:
+    def __init__(self) -> None:
+        self.head = None
+        self.tail = None
+        pass
+    def enqueue(self, data):
+        """Add a value to the back of the queue."""
+        newNode = dNode(data)
+        if self.tail == None and self.head == None:
+            self.head = self.tail = newNode
+        elif self.tail == self.head:
+            self.head.next = newNode
+            newNode.prev = self.head
+            self.tail = newNode
+        else: 
+            self.tail.next = newNode
+            newNode.prev = self.tail
+            self.tail = newNode
+    def dequeue(self):
+        """Remove an element from the front of the queue."""
+        if self.tail == None and self.head == None:
+            """If the queue is empty"""
+            return
+        elif self.tail == self.head:
+            """If there is one element in the queue."""
+            temp = self.tail
+            self.tail = self.head = None
+            del temp
+        else:
+            """If there is more than one element in the queue."""
+            temp = self.head
+            self.head = self.head.next
+            self.head.prev = None
+            del temp
+    def export(self) -> list:
+        """Return the queue as a list"""
+        l = []
+        temp = self.head
+        while temp is not None:
+            l.append(temp.data)
+            temp = temp.next
+        return l

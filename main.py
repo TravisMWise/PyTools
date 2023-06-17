@@ -1,26 +1,32 @@
 from sorting import Sorter
-from data_structures import BST
+from data_structures import *
 from searching import Searcher
 import time
 
 def main() -> None:
-    """The main function for this script."""
-    rawData = readData('input.txt', 'int')
-    # print("Unsorted Data: {}".format(rawData))
+    """The main function for this script.
+    Used for testing the algos created in this repo."""
+    data = readData('data/basic.txt', 'int')
+    print("Unsorted Data: {}".format(data))
     sorter = Sorter()
-    sorter.quickSort(rawData)
-    # print("\nSorted data: {}".format(rawData))
+    sorter.quickSort(data)
+    print("Sorted data: {}".format(data))
     searcher = Searcher()
-    startTime = time.time()
-    for data in rawData:
-        searcher.binarySearch(rawData, data)
-    endTime = time.time()
-    print(endTime-startTime)
-    startTime = time.time()
-    for data in rawData:
-        searcher.iterativeSearch(rawData, data)
-    endTime = time.time()
-    print(endTime-startTime)
+    # stack = Stack()
+    # for e in data:
+    #     stack.push(e)
+    #     print(stack.export())
+    # for e in data:
+    #     stack.pop()
+    #     print(stack.export())
+    queue = Queue()
+    for e in data:
+        queue.enqueue(e)
+        print(queue.export())
+    for e in data:
+        queue.dequeue()
+        print(queue.export())
+
 
 def readData(filename, type) -> list:
     """Read in data from a text file. 
