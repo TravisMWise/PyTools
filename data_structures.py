@@ -15,7 +15,7 @@ class BST:
             self.addNode(data, self.head)
     def addNode(self, data, cur):
         if data == cur.data:
-            print("Data already entered, no duplicates.")
+            # print("Data already entered, no duplicates.")
             return
         if data < cur.data:
             if cur.left == None:
@@ -84,13 +84,16 @@ class BST:
         print(type + ": ")
         self.printAll(self.head, type)
         print()
-    def printAll(self, head, type):
-        if head:
-            if type == "PreOrder": print(head.data, end=" ")
-            self.printAll(head.left, type)
-            if type == "InOrder": print(head.data, end=" ")
-            self.printAll(head.right, type)
-            if type == "PostOrder": print(head.data, end=" ")
+    def printAll(self, cur, type):
+        if cur:
+            if type == "PreOrder": 
+                print(cur.data, end=" ")
+            self.printAll(cur.left, type)
+            if type == "InOrder": 
+                print(cur.data, end=" ")
+            self.printAll(cur.right, type)
+            if type == "PostOrder": 
+                print(cur.data, end=" ")
 class AVL:
     pass
 class Trie:
@@ -182,6 +185,10 @@ class Stack:
     def __init__(self) -> None:
         self.head = None
         pass
+    def isEmpty(self) -> bool:
+        if self.head == None:
+            return False
+        return True
     def push(self, data):
         """Add a value to the front of the stack."""
         if self.head == None: # Check if the stack is empty
@@ -190,13 +197,16 @@ class Stack:
             newHead = dNode(data, self.head)
             self.head = newHead
     def pop(self):
-        """Remove the first value to the stack if it exists."""
+        """Remove the first value to the stack if it exists
+        and return it."""
         if self.head == None:
-            return
+            return self.head.data
         else:
             temp = self.head
             self.head = self.head.next
+            ret = temp.data
             del temp
+            return ret
     def export(self) -> list:
         """Return every element in the stack as a list"""
         l = []
@@ -210,6 +220,10 @@ class Queue:
         self.head = None
         self.tail = None
         pass
+    def isEmpty(self):
+        if self.head:
+            return False
+        return True
     def enqueue(self, data):
         """Add a value to the back of the queue."""
         newNode = dNode(data)
@@ -227,18 +241,22 @@ class Queue:
         """Remove an element from the front of the queue."""
         if self.tail == None and self.head == None:
             """If the queue is empty"""
-            return
+            return None
         elif self.tail == self.head:
             """If there is one element in the queue."""
             temp = self.tail
             self.tail = self.head = None
+            ret = temp.data
             del temp
+            return ret
         else:
             """If there is more than one element in the queue."""
             temp = self.head
             self.head = self.head.next
             self.head.prev = None
+            ret = temp.data
             del temp
+            return ret
     def export(self) -> list:
         """Return the queue as a list"""
         l = []
