@@ -98,12 +98,95 @@ class Trie:
     pass
 
 class dNode:
+    """Node data structure for stacks, queues, and linked lists."""
     def __init__(self, data: int=None, next=None, prev=None) -> None:
         self.data = data
         self.next = next
         self.prev = prev
         pass
-    pass
+class LinkedList:
+    """Doubly LinkedList that supports adding and removing from both ends."""
+    def __init__(self) -> None:
+        self.head = self.tail = None
+    def addStart(self, data):
+        """Add a value to the start of the list."""
+        newNode = dNode(data)
+        if self.head == None:
+            self.head = self.tail = newNode
+            pass
+        elif self.head == self.tail:
+            self.head = newNode
+            self.head.next = self.tail
+            self.tail.prev = self.head
+            pass
+        else:
+            newNode.next = self.head
+            self.head.prev = newNode
+            self.head = newNode
+    def addEnd(self, data):
+        """Add a value to the end of the list."""
+        newNode = dNode(data)
+        if self.head == None:
+            self.head = self.tail = newNode
+        elif self.head == self.tail:
+            self.tail = newNode
+            self.head.next = self.tail
+            self.tail.prev = self.head
+        else:
+            newNode.prev = self.tail
+            self.tail.next = newNode
+            self.tail = newNode
+    def delStart(self):
+        """Remove a value from the start of the list."""
+        if self.head == None:
+            return
+        elif self.head == self.tail:
+            temp = self.head
+            self.head = self.tail = None
+            del temp
+        else:
+            temp = self.head
+            if self.head.next == self.tail:
+                self.tail.prev = None
+                self.head = self.tail
+            else:
+                self.head = self.head.next
+                self.head.prev = None
+            del temp
+    def delEnd(self):
+        """Remove a value from the end of the list."""
+        if self.head == None:
+            return
+        elif self.head == self.tail:
+            temp = self.tail
+            self.head = self.tail = None
+            del temp
+        else:
+            temp = self.tail
+            if self.tail.prev == self.head:
+                self.head.next = None
+                self.tail = self.head
+            else:
+                self.tail = self.tail.prev
+                self.tail.next = None
+            del temp
+    def export(self):
+        """Return the LinkedList as a list from head to tail."""
+        l = []
+        temp = self.head
+        while temp is not None:
+            l.append(temp.data)
+            temp = temp.next
+        return l
+
+
+
+
+
+
+
+
+
 class Stack:
     """Stack data type that supports adding 
     and removing from the front of the structure."""

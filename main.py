@@ -7,25 +7,19 @@ def main() -> None:
     """The main function for this script.
     Used for testing the algos created in this repo."""
     data = readData('data/basic.txt', 'int')
-    print("Unsorted Data: {}".format(data))
+    # print("Unsorted Data: {}".format(data))
     sorter = Sorter()
-    sorter.quickSort(data)
+    data = sorter.mergeSort(data)
     print("Sorted data: {}".format(data))
-    searcher = Searcher()
-    # stack = Stack()
-    # for e in data:
-    #     stack.push(e)
-    #     print(stack.export())
-    # for e in data:
-    #     stack.pop()
-    #     print(stack.export())
-    queue = Queue()
+    ll = LinkedList()
     for e in data:
-        queue.enqueue(e)
-        print(queue.export())
+        ll.addStart(e)
+        ll.addEnd(e)
+    print(ll.export())
     for e in data:
-        queue.dequeue()
-        print(queue.export())
+        ll.delStart()
+        ll.delEnd()
+        print(ll.export())
 
 
 def readData(filename, type) -> list:

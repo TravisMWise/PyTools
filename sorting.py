@@ -39,8 +39,8 @@ class Sorter():
         """Split the nums in half recursively until the halfs are sorted (1 element each).
         Sort the separate nums segments based on the first element in the two subnumss"""
         length = len(nums)
-        values = self.split(nums, length)
-        return values
+        nums = self.split(nums, length)
+        return nums
     def split(self, nums, length) -> list:
         """A helper method for merge sort."""
         if length == 1:
