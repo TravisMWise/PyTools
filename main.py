@@ -2,12 +2,10 @@
 import time
 
 # Modules
-from sorting import Sorter
 from data_structures import *
-from searching import Searcher
-from algorithms import AlgoHelper
+from algorithms import AlgoHelper, Searcher, Sorter
 
-# TODO: BFS & DFS, Backtracking
+# TODO: Backtracking
 
 def readData(filename, type) -> list:
     """Read in data from a text file. 
