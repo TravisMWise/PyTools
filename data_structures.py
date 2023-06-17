@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, data=None, left=None, right=None) -> None:
         self.data = data
@@ -96,7 +95,6 @@ class AVL:
     pass
 class Trie:
     pass
-
 class dNode:
     """Node data structure for stacks, queues, and linked lists."""
     def __init__(self, data: int=None, next=None, prev=None) -> None:
@@ -178,15 +176,6 @@ class LinkedList:
             l.append(temp.data)
             temp = temp.next
         return l
-
-
-
-
-
-
-
-
-
 class Stack:
     """Stack data type that supports adding 
     and removing from the front of the structure."""

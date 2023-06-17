@@ -1,26 +1,26 @@
+# Imports
+import time
+
+# Modules
 from sorting import Sorter
 from data_structures import *
 from searching import Searcher
-import time
+from algorithms import AlgoHelper
 
 def main() -> None:
     """The main function for this script.
     Used for testing the algos created in this repo."""
     data = readData('data/basic.txt', 'int')
-    # print("Unsorted Data: {}".format(data))
-    sorter = Sorter()
-    data = sorter.mergeSort(data)
-    print("Sorted data: {}".format(data))
-    ll = LinkedList()
-    for e in data:
-        ll.addStart(e)
-        ll.addEnd(e)
-    print(ll.export())
-    for e in data:
-        ll.delStart()
-        ll.delEnd()
-        print(ll.export())
-
+    print("Data: {}".format(data))
+    AH = AlgoHelper()
+    perm = AH.pemutation(data)
+    print("Permutations:")
+    for e in perm:
+        print(e)
+    comb = AH.combination(data)
+    print("Combinations:")
+    for e in comb:
+        print(e)
 
 def readData(filename, type) -> list:
     """Read in data from a text file. 
